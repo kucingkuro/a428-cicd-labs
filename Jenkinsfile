@@ -1,22 +1,30 @@
 pipeline {
-    agent any
-
+    agent {
+        docker {
+            image 'node:lts-buster-slim'
+            args '-p 3000:3000'
+        }
+    }
+    environment {
+        CI = 'true'
+    }
     stages {
-        stage('Install Dependencies') {
+        stage('Build') {
             steps {
-                // Bersihkan folder node_modules jika diperlukan
-                sh 'rm -rf node_modules'
-                // Jalankan npm install
                 sh 'npm install'
             }
         }
-    }
-
-    post {
-        always {
-            // Tambahkan langkah-langkah pembersihan jika diperlukan
-            // Contoh: Hapus node_modules setelah selesai
-            sh 'rm -rf node_modules'
+        stage('Test') {
+            steps {
+                sh './jenkins/scripts/test.sh'
+            }
+        }
+        stage('Deliver') {
+            steps {
+                sh './jenkins/scripts/deliver.sh'
+                input message: 'Finished using the website? (Click "Proceed" to continue)'
+                sh './jenkins/scripts/kill.sh'
+            }
         }
     }
 }
