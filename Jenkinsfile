@@ -22,7 +22,7 @@ pipeline {
         stage('Deploy') {
             steps {
             sh "chmod +x -R ${env.WORKSPACE}"
-            sh "./deploy.sh"
+            sh "./jenkins/scripts/deploy.sh"
         }
         }
         stage('Deliver') {
