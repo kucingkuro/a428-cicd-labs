@@ -10,10 +10,9 @@ echo "Memulai proses deploy..."
 # Misalnya: menggunakan rsync, scp, atau layanan CI/CD seperti AWS CodeDeploy
 
 # Contoh: Menggunakan rsync untuk mengirim file ke server produksi
-rsync -avz --exclude='node_modules' ./path/to/your/application user@your-production-server:/path/to/deployment/directory
+# rsync -avz --exclude='node_modules' ./path/to/your/application user@your-production-server:/path/to/deployment/directory
 
-# Contoh lain: Menyalin file ke server produksi dengan SCP
-# scp -r ./path/to/your/application/* user@your-production-server:/path/to/deployment/directory
+git clone https://github.com/kucingkuro/a428-cicd-labs.git \\wsl.localhost\Ubuntu-22.04\home\test
 
-# Menyelesaikan proses deploy
+
 echo "Proses deploy selesai."
