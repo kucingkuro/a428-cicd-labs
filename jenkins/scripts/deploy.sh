@@ -12,7 +12,4 @@ echo "Memulai proses deploy..."
 # Contoh: Menggunakan rsync untuk mengirim file ke server produksi
 # rsync -avz --exclude='node_modules' ./path/to/your/application user@your-production-server:/path/to/deployment/directory
 
-git clone https://github.com/kucingkuro/a428-cicd-labs.git \\wsl.localhost\Ubuntu-22.04\home\test
-
-
 echo "Proses deploy selesai."
